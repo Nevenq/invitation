@@ -1,11 +1,17 @@
 import React from 'react';
 import './App.css';
+//@ts-ignore
+import {YMaps, Map, Placemark,} from "@pbe/react-yandex-maps"
+
+const defaultState = {
+    center: [56.836695, 60.592158],
+    zoom: 15,
+};
 
 function App() {
-    const ref = React.useRef(null)
     return (
-        <div >
-            <div className={"block"}>
+        <div>
+            <div className={"block first"}>
                 <div className={"greetings"}>
                     <div className={"smallLine"}/>
                     <div className={"bigLine"}/>
@@ -50,7 +56,140 @@ function App() {
                     </svg>
                 </div>
             </div>
-            <div className={"block second"}>2</div>
+            <div className={"block second"}>
+                <div className={"wedding-date"}>
+                    <svg viewBox="0 0 960 220">
+                        <symbol id="s-text">
+                            <text textAnchor="middle" x="50%" y="80%">17.06.2023</text>
+                        </symbol>
+
+                        <g className="g-ants">
+                            <use href="#s-text" className="text-copy"></use>
+                            <use href="#s-text" className="text-copy"></use>
+                            <use href="#s-text" className="text-copy"></use>
+                            <use href="#s-text" className="text-copy"></use>
+                            <use href="#s-text" className="text-copy"></use>
+                        </g>
+                    </svg>
+                </div>
+                <div className={"guide"}>
+                    <div className={"guide-info"}>
+                        <div className={"guide-info-caption"}>Как добраться?</div>
+                        <div>
+                            <div><b>Отель Тенет</b></div>
+                            <div>Самый центр Екатеринбурга</div>
+                            <br/>
+                            <div>ул. Хохрякова 1а</div>
+                            <div>Вход со стороны улицы проспект Ленина</div>
+                            <div>Банкетный зал на 9 этаже</div>
+                        </div>
+                    </div>
+                    <div className={"guide-map"}>
+                        <iframe
+                            src="https://yandex.ru/map-widget/v1/?ll=60.591703%2C56.836685&mode=search&oid=1732563459&ol=biz&sll=60.597465%2C56.838011&sspn=0.479279%2C0.152613&text=%D0%A2%D0%B5%D0%BD%D0%B5%D1%82&z=14"
+                            width="100%" height="100%" frameBorder={"none"} allowFullScreen
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+            <div className={"block third"}>
+                <div className={"day-program-caption"}>Программа дня</div>
+                <div className={"day-program"}>
+                    <div className={"day-part"}>
+                        <div className={"day-part-date"}>15:30</div>
+                        <div className={"day-part-image"}>
+                            <img width={100} src={"/champagne.png"}/>
+                            <div className={"day-part-separator"}/>
+                        </div>
+                        <div>
+                            <div className={"day-part-caption"}>Фуршет</div>
+                            <div style={{width: 285}}>Новые знакомства и интересные беседы</div>
+                        </div>
+                    </div>
+                    <div className={"day-part"}>
+                        <div className={"day-part-date"}>16:00</div>
+                        <div className={"day-part-image"}>
+                            <img width={100} src={"/rings.png"}/>
+                            <div className={"day-part-separator"}/>
+                        </div>
+                        <div>
+                            <div className={"day-part-caption"}>Фуршет</div>
+                            <div style={{width: 285}}>Новые знакомства и интересные беседы</div>
+                        </div>
+                    </div>
+                    <div className={"day-part"}>
+                        <div className={"day-part-date"}>17:00</div>
+                        <div className={"day-part-image"}>
+                            <img width={100} src={"/balloons.png"}/>
+                            <div className={"day-part-separator"}/>
+                        </div>
+                        <div>
+                            <div className={"day-part-caption"}>Фуршет</div>
+                            <div style={{width: 285}}>Новые знакомства и интересные беседы</div>
+                        </div>
+                    </div>
+                    <div className={"day-part"}>
+                        <div className={"day-part-date"}>23:00</div>
+                        <div className={"day-part-image"}>
+                            <img width={100} src={"/cake.png"}/>
+                        </div>
+                        <div>
+                            <div className={"day-part-caption"}>Фуршет</div>
+                            <div style={{width: 285}}>Новые знакомства и интересные беседы</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className={"block fourth"}>
+                <div className={"dress-code-caption"}>Dress code</div>
+                <div>Мы будем очень благодарны, если вы поддержите цветовую палитру<br/> нашей свадьбы в ваших нарядах
+                </div>
+                <div className={"dress-code-colors"}>
+                    <img src="/color1.svg" alt=""/>
+                    <img src="/color2.svg" alt=""/>
+                    <img src="/color3.svg" alt=""/>
+                    <img src="/color4.svg" alt=""/>
+                    <img src="/color5.svg" alt=""/>
+                </div>
+            </div>
+
+            <div className={"block fifth"}>
+                <div className={"dress-code-caption"}>Организация свадьбы</div>
+                <div>Наши организаторы с радостью помогут в различных вопросах, будь то<br/> поиск входа в банкетный зал
+                    или подготовка сюрприза
+                </div>
+                <div className={"organizers"}>
+                    <div className={"smallLine"}/>
+                    <div className={"bigLine"}/>
+                    <div className={"smallLine right"}/>
+                    <div className={"bigLine right"}/>
+
+                    <div className={"organizer"}>
+                        <div><img src="/inna.png" alt=""/></div>
+                        <div className={"organizer-name"}>Инна</div>
+                        <div className={"organizer-contacts"}>
+                            <div><img src="/call.svg" alt=""/>
+                                <div>Позвонить<br/> по телефону</div>
+                            </div>
+                            <div><img src="/whatsapp.svg" alt=""/>
+                                <div>Написать<br/> в WhatsApp</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={"organizer"}>
+                        <div><img src="/elena.png" alt=""/></div>
+                        <div className={"organizer-name"}>Елена</div>
+                        <div className={"organizer-contacts"}>
+                            <div><img src="/call.svg" alt=""/>
+                                <div>Позвонить<br/> по телефону</div>
+                            </div>
+                            <div><img src="/whatsapp.svg" alt=""/>
+                                <div>Написать<br/> в WhatsApp</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
