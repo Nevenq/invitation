@@ -111,7 +111,7 @@ function App() {
                         <div className={"day-part"}>
                             <div className={"day-part-date"}>15:30</div>
                             <div className={"day-part-image"}>
-                                <img width={100} src={"/champagne.png"}/>
+                                <img width={100} src={"./champagne.png"}/>
                                 <div className={"day-part-separator"}/>
                             </div>
                             <div>
@@ -122,7 +122,7 @@ function App() {
                         <div className={"day-part"}>
                             <div className={"day-part-date"}>16:00</div>
                             <div className={"day-part-image"}>
-                                <img width={100} src={"/rings.png"}/>
+                                <img width={100} src={"./rings.png"}/>
                                 <div className={"day-part-separator"}/>
                             </div>
                             <div>
@@ -133,7 +133,7 @@ function App() {
                         <div className={"day-part"}>
                             <div className={"day-part-date"}>17:00</div>
                             <div className={"day-part-image"}>
-                                <img width={100} src={"/balloons.png"}/>
+                                <img width={100} src={"./balloons.png"}/>
                                 <div className={"day-part-separator"}/>
                             </div>
                             <div>
@@ -144,7 +144,7 @@ function App() {
                         <div className={"day-part"}>
                             <div className={"day-part-date"}>23:00</div>
                             <div className={"day-part-image"}>
-                                <img width={100} src={"/cake.png"}/>
+                                <img width={100} src={"./cake.png"}/>
                             </div>
                             <div>
                                 <div className={"day-part-caption"}>Фуршет</div>
@@ -159,11 +159,11 @@ function App() {
                         нарядах
                     </div>
                     <div className={"dress-code-colors"}>
-                        <img src="/color1.svg" alt=""/>
-                        <img src="/color2.svg" alt=""/>
-                        <img src="/color3.svg" alt=""/>
-                        <img src="/color4.svg" alt=""/>
-                        <img src="/color5.svg" alt=""/>
+                        <img src="./color1.svg" alt=""/>
+                        <img src="./color2.svg" alt=""/>
+                        <img src="./color3.svg" alt=""/>
+                        <img src="./color4.svg" alt=""/>
+                        <img src="./color5.svg" alt=""/>
                     </div>
                 </div>
 
@@ -180,25 +180,25 @@ function App() {
                         <div className={"bigLine right"}/>
 
                         <div className={"organizer"}>
-                            <div><img src="/inna.png" alt=""/></div>
+                            <div><img src="./inna.png" alt=""/></div>
                             <div className={"organizer-name"}>Инна</div>
                             <div className={"organizer-contacts"}>
-                                <div><img src="/call.svg" alt=""/>
+                                <div><img src="./call.svg" alt=""/>
                                     <div>Позвонить<br/> по телефону</div>
                                 </div>
-                                <div><img src="/whatsapp.svg" alt=""/>
+                                <div><img src="./whatsapp.svg" alt=""/>
                                     <div>Написать<br/> в WhatsApp</div>
                                 </div>
                             </div>
                         </div>
                         <div className={"organizer"}>
-                            <div><img src="/elena.png" alt=""/></div>
+                            <div><img src="./elena.png" alt=""/></div>
                             <div className={"organizer-name"}>Елена</div>
                             <div className={"organizer-contacts"}>
-                                <div><img src="/call.svg" alt=""/>
+                                <div><img src="./call.svg" alt=""/>
                                     <div>Позвонить<br/> по телефону</div>
                                 </div>
-                                <div><img src="/whatsapp.svg" alt=""/>
+                                <div><img src="./whatsapp.svg" alt=""/>
                                     <div>Написать<br/> в WhatsApp</div>
                                 </div>
                             </div>
