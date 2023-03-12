@@ -10,6 +10,7 @@ import {ReactComponent as Color5} from "./icons/color5.svg";
 import {Carousel} from "react-responsive-carousel"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import {WhatsAppOutlined, PhoneOutlined} from "@ant-design/icons"
+import {useMediaQuery} from 'react-responsive'
 
 const tg = {token: "6233181523:AAGQSUAdLYIbgS8w5iJTAWh_ZfneMxs0g-k", chat_id: -978489665};
 
@@ -20,6 +21,7 @@ function App() {
     const [submitted, setSubmitted] = React.useState(false);
     const [activeColor, setActiveColor] = React.useState<number>(0);
     const sliderRef = React.useRef<Carousel>(null);
+    const isSmall = useMediaQuery({query: "(max-width: 1199px)"})
 
     const handleSetColor = (index: number) => () => {
         setActiveColor(index);
@@ -34,7 +36,7 @@ function App() {
     }
     return (
         <ConfigProvider theme={{components: {Radio: {colorPrimary: "#563C77"}, Checkbox: {colorPrimary: "#563C77"}}}}>
-            <div>
+            <div style={{width: "100%"}}>
                 <div className={"block first"}>
                     <div className={"greetings"}>
                         <div className={"smallLine"}/>
@@ -85,7 +87,7 @@ function App() {
                 </div>
                 <div className={"block second"}>
                     <div className={"wedding-date"}>
-                        <svg viewBox="0 0 960 220">
+                        <svg viewBox={`0 0 ${isSmall ? 700 : 960} 220`}>
                             <symbol id="s-text">
                                 <text textAnchor="middle" x="50%" y="80%">17.06.2023</text>
                             </symbol>
@@ -175,46 +177,42 @@ function App() {
                         палитру<br/> нашей свадьбы в ваших
                         нарядах
                     </div>
-                    <div className={"dress-code-colors"}>
-                        <Color1 onClick={handleSetColor(0)}
-                                className={activeColor === 0 ? "active" : undefined}/>
-                        <Color2 onClick={handleSetColor(1)}
-                                className={activeColor === 1 ? "active" : undefined}/>
-                        <Color3 onClick={handleSetColor(2)}
-                                className={activeColor === 2 ? "active" : undefined}/>
-                        <Color4 onClick={handleSetColor(3)}
-                                className={activeColor === 3 ? "active" : undefined}/>
-                        <Color5 onClick={handleSetColor(4)}
-                                className={activeColor === 4 ? "active" : undefined}/>
-                    </div>
-                    <div className={"dress-code-image"}>
-                        {/*<ImageGallery*/}
-                        {/*    items={[*/}
-                        {/*        {original: "https://www.mam4.ru/resize/1280x-/https/www.mam4.ru/media/upload/user/7604/6d/17478da42271207e1d86.jpg?h=Mxo3Zb0KBXasmNFnDhoRbA"},*/}
-                        {/*        {original: "https://mobimg.b-cdn.net/v3/fetch/fe/fe22186dba2df35f07573604aa8a0e63.jpeg?w=1470&r=0.5625"},*/}
-                        {/*        {original: "https://chudo-prirody.com/uploads/posts/2021-08/1628905013_66-p-skachat-foto-milikh-kotikov-72.jpg"},*/}
-                        {/*        {original: "https://i01.fotocdn.net/s121/812174e17c001a41/public_pin_l/2764195349.jpg"},*/}
-                        {/*        {original: "https://mobimg.b-cdn.net/v3/fetch/aa/aaa5465c1c0026e54fa9dc7f8d35c3a9.jpeg"}]}/>*/}
-                        <Carousel selectedItem={activeColor} ref={sliderRef} width={500} infiniteLoop showArrows={false}
-                                  showIndicators={false}
-                                  showStatus={false}
-                                  showThumbs={false}>
-                            <img width={500}
-                                 src={"https://www.mam4.ru/resize/1280x-/https/www.mam4.ru/media/upload/user/7604/6d/17478da42271207e1d86.jpg?h=Mxo3Zb0KBXasmNFnDhoRbA"}/>
+                    <div className={"dress-code-content"}>
+                        <div className={"dress-code-colors"}>
+                            <Color1 onClick={handleSetColor(0)}
+                                    className={activeColor === 0 ? "active" : undefined}/>
+                            <Color2 onClick={handleSetColor(1)}
+                                    className={activeColor === 1 ? "active" : undefined}/>
+                            <Color3 onClick={handleSetColor(2)}
+                                    className={activeColor === 2 ? "active" : undefined}/>
+                            <Color4 onClick={handleSetColor(3)}
+                                    className={activeColor === 3 ? "active" : undefined}/>
+                            <Color5 onClick={handleSetColor(4)}
+                                    className={activeColor === 4 ? "active" : undefined}/>
+                        </div>
+                        <div className={"dress-code-image"}>
+                            <Carousel selectedItem={activeColor} ref={sliderRef} infiniteLoop
+                                      showArrows={false}
+                                      showIndicators={false}
+                                      showStatus={false}
+                                      showThumbs={false} swipeable={false}>
+                                <img
+                                    src={"https://www.mam4.ru/resize/1280x-/https/www.mam4.ru/media/upload/user/7604/6d/17478da42271207e1d86.jpg?h=Mxo3Zb0KBXasmNFnDhoRbA"}/>
 
-                            <img width={500}
-                                 src={"https://mobimg.b-cdn.net/v3/fetch/fe/fe22186dba2df35f07573604aa8a0e63.jpeg?w=1470&r=0.5625"}/>
+                                <img
+                                    src={"https://mobimg.b-cdn.net/v3/fetch/fe/fe22186dba2df35f07573604aa8a0e63.jpeg?w=1470&r=0.5625"}/>
 
-                            <img width={500}
-                                 src={"https://i01.fotocdn.net/s121/812174e17c001a41/public_pin_l/2764195349.jpg"}/>
+                                <img
+                                    src={"https://i01.fotocdn.net/s121/812174e17c001a41/public_pin_l/2764195349.jpg"}/>
 
-                            <img width={500}
-                                 src={"https://chudo-prirody.com/uploads/posts/2021-08/1628905013_66-p-skachat-foto-milikh-kotikov-72.jpg"}/>
+                                <img
+                                    src={"https://chudo-prirody.com/uploads/posts/2021-08/1628905013_66-p-skachat-foto-milikh-kotikov-72.jpg"}/>
 
-                            <img width={500}
-                                 src={"https://mobimg.b-cdn.net/v3/fetch/aa/aaa5465c1c0026e54fa9dc7f8d35c3a9.jpeg"}/>
-                        </Carousel>
+                                <img
+                                    src={"https://mobimg.b-cdn.net/v3/fetch/aa/aaa5465c1c0026e54fa9dc7f8d35c3a9.jpeg"}/>
+                            </Carousel>
 
+                        </div>
                     </div>
                 </div>
 

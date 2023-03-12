@@ -1,10 +1,15 @@
 body {
+  width: 100%;
   background: linear-gradient(-45deg, #F9C1CD, #C9B1D8, #B4BDE9, #D6A5C7);
   background-size: 400% 400%;
   animation: gradient 10s ease infinite;
   height: 100vh;
   font-family: "JetBrains Mono", monospace;
   color: #563C77;
+}
+
+#root {
+  width: 100%;
 }
 
 @keyframes gradient {
@@ -20,6 +25,7 @@ body {
 }
 
 .block {
+  width: 100%;
   box-sizing: border-box;
   min-height: 100vh;
   display: flex;
@@ -78,6 +84,7 @@ body {
 }
 
 .question {
+  text-align: center;
   font-family: Jura;
   font-weight: 700;
   font-size: 28px;
@@ -196,6 +203,7 @@ body {
 }
 
 .guide-info-caption {
+  text-align: center;
   font-family: Jura;
   font-weight: 700;
   font-size: 44px;
@@ -279,6 +287,13 @@ body {
   color: #563c77;
 }
 
+.dress-code-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
 .dress-code-text {
   text-align: center;
 }
@@ -322,7 +337,6 @@ body {
   width: 500px;
   height: 500px;
   position: relative;
-  margin-top: 50px;
 }
 
 .block.fifth {
@@ -419,16 +433,94 @@ body {
     flex-direction: column;
     gap: 40px;
   }
+  .organizers {
+    .organizer-contacts {
+      font-size: 10px !important;
+    }
+
+    img {
+      width: 138px !important;
+    }
+
+    .contact-icon {
+      font-size: 20px !important;
+    }
+
+
+    padding: 60px 40px;
+  }
 
   /* стили для xs-устройств */
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
+@media (max-width: 991px) {
+  .organizers {
+    .organizer-contacts {
+      font-size: 14px;
+    }
 
+    img {
+      width: 188px;
+    }
+
+    .contact-icon {
+      font-size: 26px;
+    }
+
+
+    padding: 60px 40px;
+  }
+  .guide {
+    flex-direction: column;
+  }
+  .name {
+    font-size: 40px;
+  }
+  .text {
+    font-size: 16px;
+  }
+  .block.first {
+    padding-top: 20px;
+  }
+
+  .guide-map {
+    width: 100%;
+  }
+  .dress-code-image {
+    width: 100%;
+    height: 300px;
+  }
   /* стили для sm-устройств */
 }
 
-@media (min-width: 991px) and (max-width: 1199px) {
+@media (max-width: 1199px) {
+  .dress-code-colors {
+    flex-direction: column;
+  }
+  .dress-code-content {
+    flex-direction: row;
+  }
+  .guide {
+    flex-direction: column;
+    gap: 50px;
+    width: 90%;
+  }
+
+  /* стили для md-устройств */
+}
+
+@media (max-width: 1600px) {
+  .guide {
+    width: 75%;
+  }
+
+  /* стили для md-устройств */
+}
+
+@media (max-width: 1400px) {
+  .guide {
+    width: 85%;
+  }
 
   /* стили для md-устройств */
 }
