@@ -1,7 +1,15 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import {ConfigProvider, Button} from "antd";
 import {Form} from "./components/Form/Form";
+import {ReactComponent as Color1} from "./icons/color1.svg";
+import {ReactComponent as Color2} from "./icons/color2.svg";
+import {ReactComponent as Color3} from "./icons/color3.svg";
+import {ReactComponent as Color4} from "./icons/color4.svg";
+import {ReactComponent as Color5} from "./icons/color5.svg";
+import {Carousel} from "react-responsive-carousel"
+import "react-responsive-carousel/lib/styles/carousel.min.css"
+import {WhatsAppOutlined, PhoneOutlined} from "@ant-design/icons"
 
 const tg = {token: "6233181523:AAGQSUAdLYIbgS8w5iJTAWh_ZfneMxs0g-k", chat_id: -978489665};
 
@@ -10,6 +18,12 @@ const guests = ["Маша", "Кирилл"]
 function App() {
     const [forms, setForms] = React.useState({});
     const [submitted, setSubmitted] = React.useState(false);
+    const [activeColor, setActiveColor] = React.useState<number>(0);
+    const sliderRef = React.useRef<Carousel>(null);
+
+    const handleSetColor = (index: number) => () => {
+        setActiveColor(index);
+    }
 
     const handleFormChange = (guestName: string, formValue: any) => {
         setForms(({...forms, [guestName]: formValue}))
@@ -52,8 +66,8 @@ function App() {
                             </g>
                             <defs>
                                 <filter id="filter0_d_31_2" x="0" y="0" width="44.5352" height="34.5714"
-                                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                        filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                    <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                                     <feColorMatrix in="SourceAlpha" type="matrix"
                                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                                                    result="hardAlpha"/>
@@ -99,6 +113,7 @@ function App() {
                         </div>
                         <div className={"guide-map"}>
                             <iframe
+                                title={"map"}
                                 src="https://yandex.ru/map-widget/v1/?ll=60.591703%2C56.836685&mode=search&oid=1732563459&ol=biz&sll=60.597465%2C56.838011&sspn=0.479279%2C0.152613&text=%D0%A2%D0%B5%D0%BD%D0%B5%D1%82&z=14"
                                 width="100%" height="100%" frameBorder={"none"} allowFullScreen
                             ></iframe>
@@ -126,8 +141,8 @@ function App() {
                                 <div className={"day-part-separator"}/>
                             </div>
                             <div>
-                                <div className={"day-part-caption"}>Фуршет</div>
-                                <div style={{width: 285}}>Новые знакомства и интересные беседы</div>
+                                <div className={"day-part-caption"}>Выездная церемония</div>
+                                <div style={{width: 285}}>Осторожно, очень трогательно</div>
                             </div>
                         </div>
                         <div className={"day-part"}>
@@ -137,8 +152,8 @@ function App() {
                                 <div className={"day-part-separator"}/>
                             </div>
                             <div>
-                                <div className={"day-part-caption"}>Фуршет</div>
-                                <div style={{width: 285}}>Новые знакомства и интересные беседы</div>
+                                <div className={"day-part-caption"}>Праздничный ужин</div>
+                                <div style={{width: 285}}>Время вкусной еды, танцев и развлечений</div>
                             </div>
                         </div>
                         <div className={"day-part"}>
@@ -147,29 +162,66 @@ function App() {
                                 <img width={100} src={"./cake.png"}/>
                             </div>
                             <div>
-                                <div className={"day-part-caption"}>Фуршет</div>
-                                <div style={{width: 285}}>Новые знакомства и интересные беседы</div>
+                                <div className={"day-part-caption"}>Окончание мероприятия</div>
+                                <div style={{width: 285}}>К сожалению, даже такой прекрасный день может закончиться
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className={"block fourth"}>
                     <div className={"dress-code-caption"}>Dress code</div>
-                    <div>Мы будем очень благодарны, если вы поддержите цветовую палитру<br/> нашей свадьбы в ваших
+                    <div className={"dress-code-text"}>Мы будем очень благодарны, если вы поддержите цветовую
+                        палитру<br/> нашей свадьбы в ваших
                         нарядах
                     </div>
                     <div className={"dress-code-colors"}>
-                        <img src="./color1.svg" alt=""/>
-                        <img src="./color2.svg" alt=""/>
-                        <img src="./color3.svg" alt=""/>
-                        <img src="./color4.svg" alt=""/>
-                        <img src="./color5.svg" alt=""/>
+                        <Color1 onClick={handleSetColor(0)}
+                                className={activeColor === 0 ? "active" : undefined}/>
+                        <Color2 onClick={handleSetColor(1)}
+                                className={activeColor === 1 ? "active" : undefined}/>
+                        <Color3 onClick={handleSetColor(2)}
+                                className={activeColor === 2 ? "active" : undefined}/>
+                        <Color4 onClick={handleSetColor(3)}
+                                className={activeColor === 3 ? "active" : undefined}/>
+                        <Color5 onClick={handleSetColor(4)}
+                                className={activeColor === 4 ? "active" : undefined}/>
+                    </div>
+                    <div className={"dress-code-image"}>
+                        {/*<ImageGallery*/}
+                        {/*    items={[*/}
+                        {/*        {original: "https://www.mam4.ru/resize/1280x-/https/www.mam4.ru/media/upload/user/7604/6d/17478da42271207e1d86.jpg?h=Mxo3Zb0KBXasmNFnDhoRbA"},*/}
+                        {/*        {original: "https://mobimg.b-cdn.net/v3/fetch/fe/fe22186dba2df35f07573604aa8a0e63.jpeg?w=1470&r=0.5625"},*/}
+                        {/*        {original: "https://chudo-prirody.com/uploads/posts/2021-08/1628905013_66-p-skachat-foto-milikh-kotikov-72.jpg"},*/}
+                        {/*        {original: "https://i01.fotocdn.net/s121/812174e17c001a41/public_pin_l/2764195349.jpg"},*/}
+                        {/*        {original: "https://mobimg.b-cdn.net/v3/fetch/aa/aaa5465c1c0026e54fa9dc7f8d35c3a9.jpeg"}]}/>*/}
+                        <Carousel selectedItem={activeColor} ref={sliderRef} width={500} infiniteLoop showArrows={false}
+                                  showIndicators={false}
+                                  showStatus={false}
+                                  showThumbs={false}>
+                            <img width={500}
+                                 src={"https://www.mam4.ru/resize/1280x-/https/www.mam4.ru/media/upload/user/7604/6d/17478da42271207e1d86.jpg?h=Mxo3Zb0KBXasmNFnDhoRbA"}/>
+
+                            <img width={500}
+                                 src={"https://mobimg.b-cdn.net/v3/fetch/fe/fe22186dba2df35f07573604aa8a0e63.jpeg?w=1470&r=0.5625"}/>
+
+                            <img width={500}
+                                 src={"https://i01.fotocdn.net/s121/812174e17c001a41/public_pin_l/2764195349.jpg"}/>
+
+                            <img width={500}
+                                 src={"https://chudo-prirody.com/uploads/posts/2021-08/1628905013_66-p-skachat-foto-milikh-kotikov-72.jpg"}/>
+
+                            <img width={500}
+                                 src={"https://mobimg.b-cdn.net/v3/fetch/aa/aaa5465c1c0026e54fa9dc7f8d35c3a9.jpeg"}/>
+                        </Carousel>
+
                     </div>
                 </div>
 
                 <div className={"block fifth"}>
                     <div className={"dress-code-caption"}>Организация свадьбы</div>
-                    <div>Наши организаторы с радостью помогут в различных вопросах, будь то<br/> поиск входа в банкетный
+                    <div className={"dress-code-text"}>Наши организаторы с радостью помогут в различных вопросах, будь
+                        то<br/> поиск входа в банкетный
                         зал
                         или подготовка сюрприза
                     </div>
@@ -178,31 +230,18 @@ function App() {
                         <div className={"bigLine"}/>
                         <div className={"smallLine right"}/>
                         <div className={"bigLine right"}/>
-
-                        <div className={"organizer"}>
-                            <div><img src="./inna.png" alt=""/></div>
-                            <div className={"organizer-name"}>Инна</div>
+                        {["inna", "elena"].map((organizer) => <div className={"organizer"} key={organizer}>
+                            <div><img src={`./${organizer}.png`} alt="" unselectable={"on"} draggable={"false"}/></div>
+                            <div className={"organizer-name"}>{organizer === "inna" ? "Инна" : "Елена"}</div>
                             <div className={"organizer-contacts"}>
-                                <div><img src="./call.svg" alt=""/>
+                                <div><PhoneOutlined className={"contact-icon"}/>
                                     <div>Позвонить<br/> по телефону</div>
                                 </div>
-                                <div><img src="./whatsapp.svg" alt=""/>
+                                <div><WhatsAppOutlined className={"contact-icon"}/>
                                     <div>Написать<br/> в WhatsApp</div>
                                 </div>
                             </div>
-                        </div>
-                        <div className={"organizer"}>
-                            <div><img src="./elena.png" alt=""/></div>
-                            <div className={"organizer-name"}>Елена</div>
-                            <div className={"organizer-contacts"}>
-                                <div><img src="./call.svg" alt=""/>
-                                    <div>Позвонить<br/> по телефону</div>
-                                </div>
-                                <div><img src="./whatsapp.svg" alt=""/>
-                                    <div>Написать<br/> в WhatsApp</div>
-                                </div>
-                            </div>
-                        </div>
+                        </div>)}
                     </div>
                 </div>
                 <div className={"block sixth"}>
@@ -220,7 +259,8 @@ function App() {
                     </div>
                     <div className={"submit-form"}>
                         <Button size={"large"} onClick={handleSubmit}>Отправить</Button>
-                        {submitted && <div className={"submit-caption"}>Ответы успешно отправлены<br/> Спасибо!</div>}
+                        <div className={"submit-caption"} style={{opacity: submitted ? 1 : 0}}>Ответы успешно отправлены<br/> Спасибо!
+                        </div>
                     </div>
                     <div className={"footer"}>Мы будем счастливы видеть вас!</div>
                 </div>

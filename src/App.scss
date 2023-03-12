@@ -1,0 +1,434 @@
+body {
+  background: linear-gradient(-45deg, #F9C1CD, #C9B1D8, #B4BDE9, #D6A5C7);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+  height: 100vh;
+  font-family: "JetBrains Mono", monospace;
+  color: #563C77;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+.block {
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.block.first {
+  padding-top: 160px;
+}
+
+.greetings {
+  position: relative;
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  padding: 55px 55px 60px 55px;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.06);
+  z-index: 2;
+}
+
+.text {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 20px;
+  color: #321C4E;
+}
+
+.name {
+  font-size: 60px;
+  font-family: "Jura";
+  margin-bottom: 70px;
+  color: #563C77;
+}
+
+.caption {
+  margin-bottom: 28px;
+  align-self: flex-start;
+  text-align: left;
+}
+
+.caption2 {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.signature {
+  margin-top: 60px;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.question {
+  font-family: Jura;
+  font-weight: 700;
+  font-size: 28px;
+  margin-top: 120px;
+}
+
+.arrow {
+  margin-top: 35px;
+}
+
+.smallLine {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: -7px;
+  width: 32px;
+  border-width: 3px 0 3px 3px;
+  border-color: #563c77;
+  border-style: solid;
+  height: 100%;
+}
+
+.smallLine.right {
+  left: unset;
+  right: -7px;
+  transform: rotate(180deg);
+
+}
+
+
+.bigLine {
+  box-sizing: border-box;
+  position: absolute;
+  top: -7px;
+  left: 0;
+  width: 33%;
+  border-width: 3px 0 0px 3px;
+  border-color: #563c77;
+  border-style: solid;
+  height: 100%;
+}
+
+
+.bigLine.right {
+  left: unset;
+  right: 0;
+  top: unset;
+  bottom: -7px;
+  transform: rotate(180deg);
+}
+
+.block.second {
+  background-color: #fff;
+}
+
+.wedding-date {
+  display: block;
+  font-size: 6.5em;
+  font-family: Jura;
+  width: 50%;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+.text-copy {
+  fill: none;
+  stroke: white;
+  stroke-dasharray: 6% 29%;
+  stroke-width: 5px;
+  stroke-dashoffset: 0%;
+  animation: stroke-offset 5.5s infinite linear;
+}
+
+.text-copy:nth-child(1) {
+  stroke: #F5D1C9;
+  animation-delay: -1;
+}
+
+.text-copy:nth-child(2) {
+  stroke: #F9C1CD;
+  animation-delay: -2s;
+}
+
+.text-copy:nth-child(3) {
+  stroke: #C9B1D8;
+  animation-delay: -3s;
+}
+
+.text-copy:nth-child(4) {
+  stroke: #B4BDE9;
+  animation-delay: -4s;
+}
+
+.text-copy:nth-child(5) {
+  stroke: #D6A5C7;
+  animation-delay: -5s;
+}
+
+@keyframes stroke-offset {
+  100% {
+    stroke-dashoffset: -35%;
+  }
+}
+
+.guide {
+  width: 65%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.guide-info {
+  line-height: 24px;
+
+}
+
+.guide-info-caption {
+  font-family: Jura;
+  font-weight: 700;
+  font-size: 44px;
+  margin-bottom: 66px;
+}
+
+.guide-map {
+  width: 620px;
+  height: 400px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.07), 0 0 10px rgba(0, 0, 0, 0.07);
+}
+
+.block.third, .block.fourth {
+  padding-top: 54px;
+  background-color: rgba(255, 223, 230, 1);
+  display: flex;
+  align-items: center;
+}
+
+.day-program-caption {
+  font-family: Jura;
+  font-size: 44px;
+  margin-bottom: 50px;
+}
+
+.day-program {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-part {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 80px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.day-part > *:first-child, .day-part > *:nth-child(3) {
+  align-self: flex-start;
+}
+
+.day-part-date,
+.day-part-caption {
+  font-weight: 500;
+}
+
+.day-part-date {
+  font-size: 24px;
+}
+
+.day-part-caption {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.day-part-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.day-part-separator {
+  width: 0;
+  height: 66px;
+  border-right: 2px dashed #563C77;
+}
+
+.block.fourth {
+  background-color: #fff;
+}
+
+.dress-code-caption {
+  font-family: Jura;
+  font-weight: 700;
+  margin-bottom: 25px;
+  font-size: 44px;
+  color: #563c77;
+}
+
+.dress-code-text {
+  text-align: center;
+}
+
+.dress-code-colors {
+  display: flex;
+  margin-top: 50px;
+}
+
+.rect-right, .rect-left, .rect-bottom, .rect-top, .rect-center {
+  transition: translate 300ms, opacity 300ms;
+}
+
+.dress-code-colors svg:hover, .dress-code-colors svg.active {
+  cursor: pointer;
+
+
+  .rect-right {
+    translate: 10px;
+  }
+
+  .rect-left {
+    translate: -10px;
+  }
+
+  .rect-bottom {
+    translate: 0 10px;
+  }
+
+  .rect-top {
+    translate: 0 -10px;
+  }
+
+  .rect-center {
+    opacity: 0;
+  }
+
+}
+
+.dress-code-image {
+  width: 500px;
+  height: 500px;
+  position: relative;
+  margin-top: 50px;
+}
+
+.block.fifth {
+  background-color: #fff;
+}
+
+.organizers {
+  width: 47%;
+  margin-top: 80px;
+  padding: 60px 80px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.organizer {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+
+  img {
+    user-select: none;
+  }
+
+}
+
+.organizer-name {
+  font-weight: 500;
+  font-size: 24px;
+  color: #321C4E;
+}
+
+.organizer-contacts {
+  text-align: center;
+  line-height: 21px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+}
+
+.contact-icon {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.block.sixth {
+  background-color: #fff;
+}
+
+.form-deadLine {
+  text-align: center;
+  line-height: 24px;
+  margin-bottom: 40px;
+}
+
+.guest-forms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+}
+
+.submit-form {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.submit-caption {
+  font-size: 14px;
+  color: #777777;
+  margin-top: 12px;
+}
+
+.footer {
+  margin-top: 50px;
+  margin-bottom: 70px;
+  font-size: 28px;
+  font-weight: 700;
+  font-family: Jura;
+}
+
+
+@media (max-width: 767px) {
+  .guide {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  /* стили для xs-устройств */
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+  /* стили для sm-устройств */
+}
+
+@media (min-width: 991px) and (max-width: 1199px) {
+
+  /* стили для md-устройств */
+}
