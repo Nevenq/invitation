@@ -316,6 +316,42 @@ body {
 }
 
 
+.block.sixth {
+    background-color: #fff;
+}
+
+.form-deadLine {
+    text-align: center;
+    line-height: 24px;
+    margin-bottom: 40px;
+}
+
+.guest-forms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+}
+
+.submit-form {
+    text-align: center;
+}
+
+.submit-caption {
+    font-size: 14px;
+    color: #777777;
+    margin-top: 12px;
+}
+
+.footer {
+    margin-top: 85px;
+    margin-bottom: 70px;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: Jura;
+}
+
+
 @media (max-width: 767px) {
     .guide {
         flex-direction: column;
