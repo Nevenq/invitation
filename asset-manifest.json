@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/nevenq.github.io/my-wedding/static/css/main.600615bb.css",
-    "main.js": "/nevenq.github.io/my-wedding/static/js/main.3bc82f57.js",
-    "index.html": "/nevenq.github.io/my-wedding/index.html",
-    "main.600615bb.css.map": "/nevenq.github.io/my-wedding/static/css/main.600615bb.css.map",
-    "main.3bc82f57.js.map": "/nevenq.github.io/my-wedding/static/js/main.3bc82f57.js.map"
+    "main.css": "./static/css/main.600615bb.css",
+    "main.js": "./static/js/main.3bc82f57.js",
+    "index.html": "./index.html",
+    "main.600615bb.css.map": "./static/css/main.600615bb.css.map",
+    "main.3bc82f57.js.map": "./static/js/main.3bc82f57.js.map"
   },
   "entrypoints": [
     "static/css/main.600615bb.css",
