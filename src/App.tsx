@@ -15,7 +15,27 @@ import {motion} from "framer-motion"
 
 const tg = {token: "6233181523:AAGQSUAdLYIbgS8w5iJTAWh_ZfneMxs0g-k", chat_id: -978489665};
 
-const guests = ["Маша", "Кирилл"]
+const allGuests = {
+    "z9v2s3": ["Алёна", "Артём"],
+    "rs2b4x": ["Аня"],
+    "q2a8js": ["Маша", "Серёжа", "Даша", "Вика"],
+    "uqgovj": ["Юля", "Альберт"],
+    "1ji6uf": ["Наташа","Ваня"],
+    "7ydr2q": ["Маша", "Кирилл"],
+    "af5681": ["Настя", "Миша"],
+    "vucc44": ["Ксюша", "Андрей"],
+    "rhyfrv": ["Вова"],
+    "g4qkrd": ["Виталя"],
+    "wjvcfm": ["Лёша"]
+}
+
+const getGuest = () => {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const guestId = urlSearchParams.get("guestId");
+    //@ts-ignore
+    return (guestId && allGuests[guestId]) || ["Дорогой гость"]
+
+}
 
 const animationProps = {
     initial: {opacity: 0},
@@ -23,13 +43,30 @@ const animationProps = {
     transition: {duration: 0.5}
 }
 
+const getDateViewBox = (isLaptop: boolean, isTablet: boolean, isLargeMobile: boolean) => {
+    if (isLargeMobile) {
+        return 500;
+    }
+    if (isTablet) {
+        return 600
+    }
+    if (isLaptop) {
+        return 700;
+    }
+    return 960;
+}
+
 function App() {
+    const [guests, setGuests] = React.useState<string[]>(getGuest())
     const ref = React.useRef<HTMLDivElement | null>(null)
     const [forms, setForms] = React.useState({});
     const [submitted, setSubmitted] = React.useState(false);
     const [activeColor, setActiveColor] = React.useState<number>(0);
     const sliderRef = React.useRef<Carousel>(null);
-    const isSmall = useMediaQuery({query: "(max-width: 1199px)"})
+    const isLaptop = useMediaQuery({query: "(max-width: 1199px)"});
+    const isTablet = useMediaQuery({query: "(max-width: 768px)"});
+    const isLargeMobile = useMediaQuery({query: "(max-width: 425px)"});
+    const viewBox = getDateViewBox(isLaptop,isTablet,isLargeMobile);
 
     const handleSetColor = (index: number) => () => {
         setActiveColor(index);
@@ -70,7 +107,8 @@ function App() {
                             </div>
                         </div>
                         <div className={"question"}>Вы готовы погрузиться в наш мир?</div>
-                        <div className={"arrow"}>
+                        <motion.div style={{y: 0}} className={"arrow"} animate={{y: [0, 10, 0]}}
+                                    transition={{repeatType: "loop", repeat: Infinity, duration: 1}}>
                             <svg width="45" height="35" viewBox="0 0 45 35" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <g filter="url(#filter0_d_31_2)">
@@ -97,11 +135,11 @@ function App() {
                                     </filter>
                                 </defs>
                             </svg>
-                        </div>
+                        </motion.div>
                     </motion.div>
                     <motion.div className={"block second"} {...animationProps}>
                         <div className={"wedding-date"}>
-                            <svg viewBox={`0 0 ${isSmall ? 700 : 960} 220`}>
+                            <svg viewBox={`0 0 ${viewBox} 220`}>
                                 <symbol id="s-text">
                                     <text textAnchor="middle" x="50%" y="80%">17.06.2023</text>
                                 </symbol>
@@ -117,7 +155,7 @@ function App() {
                         </div>
                         <div className={"guide"}>
                             <div className={"guide-info"}>
-                                <div className={"guide-info-caption glitch"} data-text={"Как добраться?"}>Как добраться?
+                                <div className={"section-caption guide-info-caption"} data-text={"Как добраться?"}>Как добраться?
                                 </div>
                                 <div>
                                     <div><b>Отель Тенет</b></div>
@@ -138,7 +176,7 @@ function App() {
                         </div>
                     </motion.div>
                     <motion.div className={"block third"} {...animationProps}>
-                        <div className={"day-program-caption"}>Программа дня</div>
+                        <div className={"section-caption day-program-caption"}>Программа дня</div>
                         <div className={"day-program"}>
                             <div className={"day-part"}>
                                 <div className={"day-part-date"}>15:30</div>
@@ -187,7 +225,7 @@ function App() {
                         </div>
                     </motion.div>
                     <motion.div className={"block fourth"} {...animationProps}>
-                        <div className={"dress-code-caption"}>Dress code</div>
+                        <div className={"section-caption dress-code-caption"}>Dress code</div>
                         <div className={"dress-code-text"}>Мы будем очень благодарны, если вы поддержите цветовую
                             палитру<br/> нашей свадьбы в ваших
                             нарядах
@@ -195,18 +233,18 @@ function App() {
                         <div className={"dress-code-content"}>
                             <div className={"dress-code-colors"}>
                                 <Color1 onClick={handleSetColor(0)}
-                                        className={activeColor === 0 ? "active" : undefined}/>
+                                        className={`dress-code-color ${activeColor === 0 ? "active" : undefined}`}/>
                                 <Color2 onClick={handleSetColor(1)}
-                                        className={activeColor === 1 ? "active" : undefined}/>
+                                        className={`dress-code-color ${activeColor === 1 ? "active" : undefined}`}/>
                                 <Color3 onClick={handleSetColor(2)}
-                                        className={activeColor === 2 ? "active" : undefined}/>
+                                        className={`dress-code-color2 ${activeColor === 2 ? "active" : undefined}`}/>
                                 <Color4 onClick={handleSetColor(3)}
-                                        className={activeColor === 3 ? "active" : undefined}/>
+                                        className={`dress-code-color ${activeColor === 3 ? "active" : undefined}`}/>
                                 <Color5 onClick={handleSetColor(4)}
-                                        className={activeColor === 4 ? "active" : undefined}/>
+                                        className={`dress-code-color ${activeColor === 4 ? "active" : undefined}`}/>
                             </div>
                             <div className={"dress-code-image"}>
-                                <Carousel selectedItem={activeColor} ref={sliderRef} infiniteLoop
+                                <Carousel selectedItem={activeColor} ref={sliderRef}  width={"100%"} infiniteLoop
                                           showArrows={false}
                                           showIndicators={false}
                                           showStatus={false}
@@ -232,7 +270,7 @@ function App() {
                     </motion.div>
 
                     <motion.div className={"block fifth"} {...animationProps}>
-                        <div className={"dress-code-caption"}>Организация свадьбы</div>
+                        <div className={"section-caption dress-code-caption"}>Организация свадьбы</div>
                         <div className={"dress-code-text"}>Наши организаторы с радостью помогут в различных вопросах,
                             будь
                             то<br/> поиск входа в банкетный
@@ -260,7 +298,7 @@ function App() {
                         </div>
                     </motion.div>
                     <motion.div className={"block sixth"} {...animationProps}>
-                        <div className={"dress-code-caption"}>Ответ на приглашение</div>
+                        <div className={"section-caption dress-code-caption"}>Ответ на приглашение</div>
                         <div className={"form-deadLine"}>
                             Мы просим подтвердить свое присутствие на торжестве и ответить на<br/> несколько вопросов,
                             которые
@@ -287,4 +325,5 @@ function App() {
     );
 }
 
-export default App;
+export default App
+;

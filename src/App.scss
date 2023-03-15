@@ -3,6 +3,7 @@ body {
   height: 100vh;
   font-family: "JetBrains Mono", monospace;
   color: #563C77;
+  text-align: center;
 }
 
 #root {
@@ -24,14 +25,15 @@ body {
 .block {
   width: 100%;
   box-sizing: border-box;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 100px;
 
 }
 
 .block.first {
+  min-height: 100vh;
   padding-top: 160px;
   background: linear-gradient(-45deg, #F9AC9C, #FB9FB3, #9AA8E8, #C991ED, #CA6AAD);
   background-size: 400% 400%;
@@ -137,6 +139,8 @@ body {
 }
 
 .block.second {
+  min-height: initial;
+  padding-bottom: 100px;
   background-color: #fff;
 }
 
@@ -202,12 +206,16 @@ body {
 
 }
 
+.section-caption {
+  font-size: 44px;
+}
+
 .guide-info-caption {
   text-align: center;
   font-family: Jura;
   font-weight: 700;
-  font-size: 44px;
   margin-bottom: 66px;
+  line-height: 30px;
 }
 
 .guide-map {
@@ -225,7 +233,6 @@ body {
 
 .day-program-caption {
   font-family: Jura;
-  font-size: 44px;
   margin-bottom: 50px;
 }
 
@@ -242,6 +249,10 @@ body {
   gap: 80px;
   align-items: center;
   margin-top: 20px;
+
+  & > *:nth-child(3) {
+    text-align: left;
+  }
 }
 
 .day-part > *:first-child, .day-part > *:nth-child(3) {
@@ -283,7 +294,6 @@ body {
   font-family: Jura;
   font-weight: 700;
   margin-bottom: 25px;
-  font-size: 44px;
   color: #563c77;
 }
 
@@ -334,8 +344,7 @@ body {
 }
 
 .dress-code-image {
-  width: 500px;
-  height: 500px;
+  width: 50%;
   position: relative;
 }
 
@@ -347,6 +356,7 @@ body {
   width: 38%;
   margin-top: 80px;
   padding: 60px 120px;
+  gap: 40px;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -393,6 +403,7 @@ body {
 
 .block.sixth {
   background-color: #fff;
+  padding-bottom: 0;
 }
 
 .form-deadLine {
@@ -427,15 +438,79 @@ body {
   font-family: Jura;
 }
 
+@media (max-width: 425px) {
+  .guide-info-caption {
+    font-size: 36px;
+  }
 
-@media (max-width: 767px) {
+
+  .dress-code-color.dress-code-color.dress-code-color.dress-code-color.dress-code-color {
+    width: 60px;
+    height: 85px;
+  }
+  .dress-code-color2.dress-code-color2.dress-code-color2.dress-code-color2.dress-code-color2 {
+    width: 91px;
+    height: 85px;
+  }
+
+  .section-caption.section-caption {
+    font-size: 32px;
+  }
+
+}
+
+@media (max-width: 600px) {
+  .section-caption {
+    font-size: 36px;
+  }
+
+
+  .dress-code-color.dress-code-color.dress-code-color.dress-code-color {
+    width: 80px;
+    height: 105px;
+  }
+  .dress-code-color2.dress-code-color2.dress-code-color2.dress-code-color2 {
+    width: 111px;
+    height: 105px;
+  }
+  .dress-code-image.dress-code-image {
+    width: 75%;
+  }
+  .day-program {
+    gap: 40px;
+  }
+  .day-part {
+    flex-direction: column;
+    gap: 40px;
+
+    > * {
+      &:nth-child(3) {
+        text-align: center;
+      }
+
+      align-self: center !important;
+    }
+
+
+    .day-part-separator {
+      display: none;
+    }
+  }
+
+  .footer {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
   .guide {
     flex-direction: column;
     gap: 40px;
   }
   .organizers {
     flex-direction: column;
-    gap:30px;
+    gap: 30px;
+
     .organizer-contacts {
       justify-content: space-evenly;
     }
@@ -450,6 +525,23 @@ body {
 
 
     padding: 60px 40px;
+  }
+  .wedding-date {
+    font-size: 5.5em;
+    width: 75%;
+  }
+
+  .dress-code-image {
+    width: 60%;
+  }
+
+  .dress-code-color.dress-code-color.dress-code-color {
+    width: 100px;
+    height: 125px;
+  }
+  .dress-code-color2.dress-code-color2.dress-code-color2 {
+    width: 131px;
+    height: 125px;
   }
 
   /* стили для xs-устройств */
@@ -488,24 +580,37 @@ body {
   .guide-map {
     width: 100%;
   }
-  .dress-code-image {
-    width: 100%;
-    height: 300px;
+
+  .dress-code-color.dress-code-color {
+    width: 130px;
+  }
+  .dress-code-color2.dress-code-color2 {
+    width: 161px;
   }
   /* стили для sm-устройств */
 }
 
 @media (max-width: 1199px) {
-  .dress-code-colors {
-    flex-direction: column;
+  .caption, .caption2 {
+    text-align: center;
+    align-self: center;
   }
-  .dress-code-content {
-    flex-direction: row;
-  }
+
   .guide {
     flex-direction: column;
     gap: 50px;
     width: 90%;
+  }
+  .dress-code-color {
+    width: 160px;
+    height: 185px;
+  }
+  .dress-code-color2 {
+    width: 191px;
+    height: 185px;
+  }
+  .organizers {
+    width: 55%;
   }
 
   /* стили для md-устройств */
